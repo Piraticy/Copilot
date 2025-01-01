@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Expenses Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .expense-form {
+            margin-bottom: 20px;
+        }
+        .expense-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .expense-item {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Personal Expenses Tracker</h1>
+    <div class="expense-form">
+        <input type="text" id="expense-name" placeholder="Expense Name">
+        <input type="number" id="expense-amount" placeholder="Amount">
+        <button onclick="addExpense()">Add Expense</button>
+    </div>
+    <ul id="expense-list" class="expense-list"></ul>
+    <h2>Total: $<span id="total-amount">0</span></h2>
+
+    <script>
+        let totalAmount = 0;
+
+        function addExpense() {
+            const nameInput = document.getElementById('expense-name');
+            const amountInput = document.getElementById('expense-amount');
+            const expenseList = document.getElementById('expense-list');
+            const totalAmountSpan = document.getElementById('total-amount');
+
+            const name = nameInput.value;
+            const amount = parseFloat(amountInput.value);
+
+            if (name && !isNaN(amount) && amount > 0) {
+                const listItem = document.createElement('li');
+                listItem.className = 'expense-item';
+                listItem.textContent = `${name}: $${amount.toFixed(2)}`;
+                expenseList.appendChild(listItem);
+
+                totalAmount += amount;
+                totalAmountSpan.textContent = totalAmount.toFixed(2);
+
+                nameInput.value = '';
+                amountInput.value = '';
+            } else {
+                alert('Please enter a valid name and amount.');
+            }
+        }
+    </script>
+</body>
+</html>

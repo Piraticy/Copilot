@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .upload-form {
+            border: 1px solid #45a049;
+            padding: 40px;
+            border-radius: 5px;
+            max-width: 400px;
+            margin: auto;
+            background-color:darkgray;
+        }
+        .upload-form input[type="file"] {
+            margin-bottom: 10px;
+        }
+        .upload-form button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .upload-form button:hover {
+            background-color: #45a049;
+            text-transform: uppercase;
+            text-emphasis: 10em;
+            }
+    </style>
+</head>
+<body>
+    <div class="upload-form">
+        <h2>Upload a File</h2>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" required>
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+</body>
+</html>
