@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <style>
+        .calculator {
+            border: 1px solid #391c1c;
+            padding: 20px;
+            display: inline-block;
+        }
+        .calculator input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 18px;
+        }
+        .calculator button {
+            width: 30%;
+            padding: 10px;
+            margin: 5px 1%;
+            font-size: 18px;
+            background-color: burlywood;
+            color: #391c1c;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" disabled>
+        <br>
+        <button onclick="appendNumber('1')">1</button>
+        <button onclick="appendNumber('2')">2</button>
+        <button onclick="appendNumber('3')">3</button>
+        <button onclick="operate('/')">/</button>
+        <br>
+        <button onclick="appendNumber('4')">4</button>
+        <button onclick="appendNumber('5')">5</button>
+        <button onclick="appendNumber('6')">6</button>
+        <button onclick="operate('*')">*</button>
+        <br>
+        <button onclick="appendNumber('7')">7</button>
+        <button onclick="appendNumber('8')">8</button>
+        <button onclick="appendNumber('9')">9</button>
+        <button onclick="operate('-')">-</button>
+        <br>
+        <button onclick="appendNumber('0')">0</button>
+        <button onclick="clearDisplay()">C</button>
+        <button onclick="calculate()">=</button>
+        <button onclick="operate('+')">+</button>
+    </div>
+
+    <script>
+        let display = document.getElementById('display');
+        let currentOperation = '';
+        let firstOperand = '';
+        let secondOperand = '';
+
+        function appendNumber(number) {
+            display.value += number;
+        }
+
+        function operate(operator) {
+            firstOperand = display.value;
+            currentOperation = operator;
+            display.value = '';
+        }
+
+        function calculate() {
+            secondOperand = display.value;
+            display.value = eval(firstOperand + currentOperation + secondOperand);
+        }
+
+        function clearDisplay() {
+            display.value = '';
+            firstOperand = '';
+            secondOperand = '';
+            currentOperation = '';
+        }
+    </script>
+</body>
+</html>

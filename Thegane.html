@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Chess Game</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        #chessboard {
+            width: 400px;
+            height: 400px;
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            grid-template-rows: repeat(8, 1fr);
+        }
+        .white {
+            background-color: #fff;
+        }
+        .black {
+            background-color: #110505;
+        }
+    </style>
+</head>
+<body>
+    <div id="chessboard"></div>
+    <script>
+        const chessboard = document.getElementById('chessboard');
+        for (let i = 0; i < 8; i++) {
+            for (let j = 0; j < 8; j++) {
+                const square = document.createElement('div');
+                square.className = (i + j) % 2 === 0 ? 'white' : 'black';
+                chessboard.appendChild(square);
+            }
+        }
+    </script>
+</body>
+</html>
