@@ -3,21 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Light Switch</title>
+    <title>Light On and Off</title>
     <style>
-        body {
-            text-align: center;
-            margin-top: 50px;
-        }
         #light {
-            width: 100px;
-            height: 100px;
-            background-color: yellow;
-            margin: 20px auto;
+            width: 400px;
+            height: 400px;
+            background-color: rgb(255, 255, 254);
+            margin: 50px auto;
             border-radius: 50%;
+            border: 2px solid black;
         }
-        .off {
-            background-color: gray;
+        .on {
+            background-color:bisque;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            border: none;
+            background-color: #06182a;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -29,6 +36,8 @@
         function toggleLight() {
             var light = document.getElementById('light');
             light.classList.toggle('off');
+            light.classList.toggle('on');
+            light.style.backgroundColor = light.classList.contains('on') ? 'bisque' : 'black';
         }
     </script>
 </body>
