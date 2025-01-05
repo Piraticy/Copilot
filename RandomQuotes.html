@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Famous Quotes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        .quote-container {
+            text-align: center;
+            background:bisque;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 10, 0, 0.1);
+        }
+        .quote {
+            color:olive;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .author {
+            font-size: 1.2em;
+            color: #555;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="quote-container">
+        <div class="quote" id="quote">"The only limit to our realization of tomorrow is our doubts of today."</div>
+        <div class="author" id="author">- Franklin D. Roosevelt</div>
+    </div>
+
+    <script>
+        const quotes = [
+            { quote: "The only limit to our realization of tomorrow is our doubts of today.", author: "Franklin D. Roosevelt" },
+            { quote: "In the end, we will remember not the words of our enemies, but the silence of our friends.", author: "Martin Luther King Jr." },
+            { quote: "The best way to predict the future is to invent it.", author: "Alan Kay" },
+            { quote: "Life is 10% what happens to us and 90% how we react to it.", author: "Charles R. Swindoll" },
+            { quote: "The only way to do great work is to love what you do.", author: "Steve Jobs" }
+        ];
+
+        function getRandomQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            return quotes[randomIndex];
+        }
+
+        function displayRandomQuote() {
+            const randomQuote = getRandomQuote();
+            document.getElementById('quote').textContent = `"${randomQuote.quote}"`;
+            document.getElementById('author').textContent = `- ${randomQuote.author}`;
+        }
+
+        displayRandomQuote();
+        setInterval(displayRandomQuote, 50000);
+    </script>
+</body>
+</html>

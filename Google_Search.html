@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .logo {
+            margin-bottom: 20px;
+        }
+        .search-box {
+            display: flex;
+            width: 100%;
+            max-width: 600px;
+        }
+        .search-box input {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #dfe1e5;
+            border-radius: 24px 0 0 24px;
+            outline: none;
+        }
+        .search-box button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: 1px solid #dfe1e5;
+            border-left: none;
+            border-radius: 0 24px 24px 0;
+            background-color: #f8f9fa;
+            cursor: pointer;
+        }
+        .search-box button:hover {
+            background-color: #e8e8e8;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" class="logo">
+    <div class="search-box">
+        <input type="text" placeholder="Search Google or type a URL">
+        <button>Google Search</button>
+    </div>
+</body>
+</html>
