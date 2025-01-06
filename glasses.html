@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Drinking Glasses</title>
+    <style>
+        #glasses-container {
+            padding: 10vw;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+
+        }
+        .glass {
+            padding: ;
+            width: 100px;
+            height: 200px;
+            border: 2px solid #000;
+            border-radius: 10px;
+            margin: 20px;
+            display: inline-block;
+            position: relative;
+        }
+        .liquid {
+            width: 100%;
+            height: 50%;
+            background-color: #00f;
+            position: absolute;
+            bottom: 0;
+            border-radius: 0 0 10px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="glasses-container"></div>
+
+    <script>
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function createGlass() {
+            const glass = document.createElement('div');
+            glass.className = 'glass';
+
+            const liquid = document.createElement('div');
+            liquid.className = 'liquid';
+            liquid.style.height = getRandomInt(10, 90) + '%';
+            liquid.style.backgroundColor = `hsl(${getRandomInt(0, 360)}, 100%, 50%)`;
+
+            glass.appendChild(liquid);
+            return glass;
+        }
+
+        function generateGlasses(count) {
+            const container = document.getElementById('glasses-container');
+            for (let i = 0; i < count; i++) {
+                container.appendChild(createGlass());
+            }
+        }
+
+        generateGlasses(10);
+    </script>
+</body>
+</html>

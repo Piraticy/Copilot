@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic World Clock</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color:coral;
+        }
+        .clock {
+            text-align: center;
+            background: bisque;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        }
+        .time {
+            font-size: 2em;
+            margin: 10px 0;
+            color:blueviolet;
+        }
+        h1 {
+            color: #333;
+            text-decoration: underline;
+
+        }
+        #Dar{
+            color:blue;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <h1>World Clock</h1>
+        <div id="new-york" class="time"></div>
+        <div id="london" class="time"></div>
+        <div id="tokyo" class="time"></div>
+        <div id="Dar" class="time"></div>
+        <div id="Australia" class="time"></div>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+
+            const options = { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            document.getElementById('new-york').textContent = 'New York: ' + now.toLocaleTimeString('en-US', options);
+
+            options.timeZone = 'Europe/London',
+            document.getElementById('london').textContent = 'London: ' + now.toLocaleTimeString('en-GB', options);
+
+            options.timeZone = 'Asia/Tokyo';
+            document.getElementById('tokyo').textContent = 'Tokyo: ' + now.toLocaleTimeString('ja-JP', options);
+        
+            options.timeZone = 'Africa/Dar_es_Salaam';
+            document.getElementById('Dar').textContent = 'Dar es Salaam: ' + now.toLocaleTimeString('sw-TZ', options);
+       
+            options.timeZone = 'Australia/Sydney';
+            document.getElementById('Australia').textContent = 'Sydney: ' + now.toLocaleTimeString('en-AU', options);
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+</body>
+</html>
