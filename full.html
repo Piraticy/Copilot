@@ -3,97 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
+    <title>Dynamic Website</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
         }
         .container {
-            text-align: center;
-            background: white;
-            padding: 50px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .container h1 {
-            margin-bottom: 20px;
-        }
-        .container a {
-            display: inline-block;
-            margin: 10px;
-            padding: 10px 20px;
-            text-decoration: none;
-            color: white;
-            background-color: #007BFF;
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
             border-radius: 5px;
         }
-        .container a:hover {
-            background-color: #0056b3;
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to Our Website</h1>
-        <a href="login.html">Login</a>
-        <a href="signup.html">Sign Up</a>
+    <div class="container" id="login-container">
+        <h2>Login</h2>
+        <form id="login-form">
+            <label for="login-username">Username:</label>
+            <input type="text" id="login-username" name="username" required><br><br>
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" name="password" required><br><br>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="#" id="show-signup">Sign up</a></p>
     </div>
-</body>
-</html></html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-        .container {
-            text-align: center;
-            background: white;
-            padding: 50px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .container h1 {
-            margin-bottom: 20px;
-        }
-        .container p {
-            margin-bottom: 20px;
-        }
-        .container a {
-            display: inline-block;
-            margin: 10px;
-            padding: 10px 20px;
-            text-decoration: none;
-            color: white;
-            background-color: #007BFF;
-            border-radius: 5px;
-        }
-        .container a:hover {
-            background-color: #0056b3;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Home Page</h1>
-        <p>Welcome, [User's Name]!</p>
-        <a href="logout.html">Logout</a>
+
+    <div class="container hidden" id="signup-container">
+        <h2>Sign Up</h2>
+        <form id="signup-form">
+            <label for="signup-username">Username:</label>
+            <input type="text" id="signup-username" name="username" required><br><br>
+            <label for="signup-password">Password:</label>
+            <input type="password" id="signup-password" name="password" required><br><br>
+            <label for="profile-picture">Profile Picture:</label>
+            <input type="file" id="profile-picture" name="profile-picture" accept="image/*" required><br><br>
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="#" id="show-login">Login</a></p>
     </div>
+
+    <div class="container hidden" id="profile-container">
+        <h2>Welcome, <span id="username-display"></span></h2>
+        <img id="profile-picture-display" src="" alt="Profile Picture" width="100"><br><br>
+        <button id="logout">Logout</button>
+    </div>
+
+    <script>
+        document.getElementById('show-signup').addEventListener('click', function() {
+            document.getElementById('login-container').classList.add('hidden');
+            document.getElementById('signup-container').classList.remove('hidden');
+        });
+
+        document.getElementById('show-login').addEventListener('click', function() {
+            document.getElementById('signup-container').classList.add('hidden');
+            document.getElementById('login-container').classList.remove('hidden');
+        });
+
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Add login functionality here
+            document.getElementById('login-container').classList.add('hidden');
+            document.getElementById('profile-container').classList.remove('hidden');
+            document.getElementById('username-display').textContent = document.getElementById('login-username').value;
+        });
+
+        document.getElementById('signup-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Add signup functionality here
+            const file = document.getElementById('profile-picture').files[0];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('profile-picture-display').src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+            document.getElementById('signup-container').classList.add('hidden');
+            document.getElementById('profile-container').classList.remove('hidden');
+            document.getElementById('username-display').textContent = document.getElementById('signup-username').value;
+        });
+
+        document.getElementById('logout').addEventListener('click', function() {
+            document.getElementById('profile-container').classList.add('hidden');
+            document.getElementById('login-container').classList.remove('hidden');
+        });
+    </script>
 </body>
 </html>
