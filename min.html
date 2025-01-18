@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mining Application</title>
+    <style>
+        body {
+            background-color:wheat;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        h1 {
+            color:teal;
+            padding: 90px;
+        }
+        #controls button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #000;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+            cursor: pointer;
+            text-emphasis: bolder;
+        }
+        #status {
+            margin-top: 20px;
+            font-size: 18px;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1>Mining Application</h1>
+    <div id="controls">
+        <button onclick="startMining()">Start</button>
+        <button onclick="pauseMining()">Pause</button>
+        <button onclick="quitMining()">Quit</button>
+    </div>
+    <div id="status">
+        <p>Coins Mined: <span id="coinsMined">0</span></p>
+        <p>Time Elapsed: <span id="timeElapsed">0</span> seconds</p>
+    </div>
+
+    <script>
+        let mining = false;
+        let coins = 0;
+        let time = 0;
+        let interval;
+
+        function startMining() {
+            if (!mining) {
+                mining = true;
+                interval = setInterval(() => {
+                    time++;
+                    coins++;
+                    document.getElementById('coinsMined').innerText = coins;
+                    document.getElementById('timeElapsed').innerText = time;
+                }, 1000);
+            }
+        }
+
+        function pauseMining() {
+            if (mining) {
+                mining = false;
+                clearInterval(interval);
+            }
+        }
+
+        function quitMining() {
+            mining = false;
+            clearInterval(interval);
+            coins = 0;
+            time = 0;
+            document.getElementById('coinsMined').innerText = coins;
+            document.getElementById('timeElapsed').innerText = time;
+        }
+    </script>
+</body>
+</html>
