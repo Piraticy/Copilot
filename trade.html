@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .section {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .section h2 {
+            margin-top: 0;
+        }
+        .live-data {
+            display: flex;
+            justify-content: space-between;
+        }
+        .live-data div {
+            width: 30%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Trading Dashboard</h1>
+        <div class="section" id="currencies">
+            <h2>Live Currencies</h2>
+            <div class="live-data">
+                <div id="currency1">USD/EUR: <span>1.12</span></div>
+                <div id="currency2">GBP/USD: <span>1.30</span></div>
+                <div id="currency3">JPY/USD: <span>0.0091</span></div>
+            </div>
+        </div>
+        <div class="section" id="metals">
+            <h2>Live Metals</h2>
+            <div class="live-data">
+                <div id="metal1">Gold: <span>$1800</span></div>
+                <div id="metal2">Silver: <span>$25</span></div>
+                <div id="metal3">Platinum: <span>$1000</span></div>
+            </div>
+        </div>
+        <div class="section" id="commodities">
+            <h2>Live Commodities</h2>
+            <div class="live-data">
+                <div id="commodity1">Oil: <span>$70</span></div>
+                <div id="commodity2">Natural Gas: <span>$3</span></div>
+                <div id="commodity3">Corn: <span>$5</span></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        async function fetchLiveData() {
+            try {
+                const response = await fetch('https://api.trading.com/live-data');
+                const data = await response.json();
+
+                document.getElementById('currency1').querySelector('span').textContent = data.currencies.usd_eur;
+                document.getElementById('currency2').querySelector('span').textContent = data.currencies.gbp_usd;
+                document.getElementById('currency3').querySelector('span').textContent = data.currencies.jpy_usd;
+
+                document.getElementById('metal1').querySelector('span').textContent = data.metals.gold;
+                document.getElementById('metal2').querySelector('span').textContent = data.metals.silver;
+                document.getElementById('metal3').querySelector('span').textContent = data.metals.platinum;
+
+                document.getElementById('commodity1').querySelector('span').textContent = data.commodities.oil;
+                document.getElementById('commodity2').querySelector('span').textContent = data.commodities.natural_gas;
+                document.getElementById('commodity3').querySelector('span').textContent = data.commodities.corn;
+            } catch (error) {
+                console.error('Error fetching live data:', error);
+            }
+        }
+
+        setInterval(fetchLiveData, 60000); // Fetch data every 60 seconds
+        fetchLiveData(); // Initial fetch
+        // JavaScript code to fetch live data can be added here
+    </script>
+</body>
+</html>
