@@ -7,6 +7,59 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 3px;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        nav ul li a:hover {
+            color: #f2f2f2;
+        }
+        section {
+            padding: 20px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding-bottom: 50px;
+        }
+        .movie {
+            background-color: #f2f2f2;
+            padding: 10px;
+            margin: 10px;
+            float: left;
+        }
+        .trailer {
+            background-color: #f2f2f2;
+            padding: 10px;
+            margin: 10px;
+            float: left;
+        }
+        video {
+            width: 100%;
+            height: auto;
+        }
+    </style>
     <header>
         <h1>Movie Website</h1>
         <nav>
@@ -59,5 +112,9 @@
     <footer>
         <p>&copy; 2023 Movie Website. All rights reserved.</p>
     </footer>
+
+    <script>
+        document.getElementById('greeting').innerText = getGreeting();
+    </script>
 </body>
 </html>
