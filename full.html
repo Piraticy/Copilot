@@ -7,17 +7,33 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+
         }
         .container {
             width: 300px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 50px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
         .hidden {
             display: none;
         }
+        input, button {
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 5px 10px;
+        }
+        img {
+            border-radius: 50%;
+        }
+
     </style>
 </head>
 <body>
@@ -48,9 +64,10 @@
     </div>
 
     <div class="container hidden" id="profile-container">
-        <h2>Welcome, <span id="username-display"></span></h2>
+        <h2>Karibu,<br> <span id="username-display"></span></h2>
         <img id="profile-picture-display" src="" alt="Profile Picture" width="100"><br><br>
         <button id="logout">Logout</button>
+        <button id="continue">Continue</button>
     </div>
 
     <script>
@@ -87,6 +104,10 @@
         });
 
         document.getElementById('logout').addEventListener('click', function() {
+            document.getElementById('profile-container').classList.add('hidden');
+            document.getElementById('login-container').classList.remove('hidden');
+        });
+        document.getElementById('continue').addEventListener('click', function() {
             document.getElementById('profile-container').classList.add('hidden');
             document.getElementById('login-container').classList.remove('hidden');
         });
