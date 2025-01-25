@@ -1,50 +1,37 @@
-const articles = document.querySelector("#articles");
-const countries = document.querySelector("#countries");
-const endpoints = document.querySelector("#endpoints");
+function createVisaHtml() {
+    const form = document.createElement('form');
+    form.setAttribute('id', 'visaForm');
 
-let countryCodes = [];
-let countryNames = [];
+    const nameLabel = document.createElement('label');
+    nameLabel.setAttribute('for', 'name');
+    nameLabel.textContent = 'Name:';
+    form.appendChild(nameLabel);
 
-fetch("./countryCodes.json")
-  .then((response) => response.json())
-  .then((data) => {
-    countryCodes = Object.keys(data);
-    countryNames = Object.values(data);
-  })
-  .then(() => {
-    for (let cn of countryNames) {
-      let btn = document.createElement("button");
-      btn.textContent = cn;
-      countries.appendChild(btn);
-      btn.addEventListener("click", () => {
-        articles.innerHTML = "";
-        loadData(countryCodes[countryNames.indexOf(cn)]);
-      });
-    }
-  });
-  function loadData(cc) {
-    if (!countryCodes.includes(cc)) throw new Error("Invalid country code");
-  
-  const url = new URL(`https://newsapi.org/v2/top-headlines`);
-    url.searchParams.append("country", cc);
-    url.searchParams.append("apiKey", "6f794b22ca2e41499096291b3a680183");
-    fetch(url.toString())
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        for (let item of data.articles) {
-          let htmlString = `
-          <article>
-          <hr />
-          <h2>${item.title}</h2>
-          <h3>${item.author}</h3>
-          <img src="${item.urlToImage}" alt="${item.title}">
-          <p>${item.description}</p>
-          <a href="${item.url}" target="_blank" >Read more</a>
-          <hr />
-          </article>
-          `;
-          articles.innerHTML += htmlString;
-        }
-      });
-  }
+    const nameInput = document.createElement('input');
+    nameInput.setAttribute('type', 'text');
+    nameInput.setAttribute('id', 'name');
+    nameInput.setAttribute('name', 'name');
+    form.appendChild(nameInput);
+
+    form.appendChild(document.createElement('br'));
+
+    const passportLabel = document.createElement('label');
+    passportLabel.setAttribute('for', 'passport');
+    passportLabel.textContent = 'Passport Number:';
+    form.appendChild(passportLabel);
+
+    const passportInput = document.createElement('input');
+    passportInput.setAttribute('type', 'text');
+    passportInput.setAttribute('id', 'passport');
+    passportInput.setAttribute('name', 'passport');
+    form.appendChild(passportInput);
+
+    form.appendChild(document.createElement('br'));
+
+    const submitButton = document.createElement('button');
+    submitButton.setAttribute('type', 'submit');
+    submitButton.textContent = 'Submit';
+    form.appendChild(submitButton);
+
+    document.body.appendChild(form);
+}
