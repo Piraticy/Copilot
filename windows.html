@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Screen</title>
+    <style>
+        body {
+            background: url('https://upload.wikimedia.org/wikipedia/en/1/1b/Windows_XP_Luna.png') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+
+        }
+        .login-box {
+            width: 300px;
+            padding: 40px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            border: 1px solid #b5ac63;
+            border-radius: 10px;
+            color: white;
+
+        }
+        .login-box input[type="text"],
+        .login-box input[type="password"] {
+            border: none;
+            background: none;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            border: 2px solid #3498db;
+            padding: 14px 10px;
+            width: 200px;
+            outline: none;
+            color: white;
+            border-radius: 24px;
+            transition: 0.25s;
+        }
+        .login-box input[type="text"]:focus,
+        .login-box input[type="password"]:focus {
+            width: 280px;
+            border-color: #2ecc71;
+        }
+        .login-box input[type="button"] {
+            border: none;
+            background: none;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            border: 2px solid #2ecc71;
+            padding: 14px 40px;
+            outline: none;
+            color: white;
+            border-radius: 24px;
+            transition: 0.25s;
+            cursor: pointer;
+        }
+        .login-box input[type="button"]:hover {
+            background: #2ecc71;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <h2>User</h2>
+        <input type="text" placeholder="Username" id="username">
+        <input type="password" placeholder="Password" id="password">
+        <input type="button" value="Login" onclick="login()">
+    </div>
+    <script>
+        function login() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            if (username === "admin" && password === "password") {
+                alert("Login Successful!");
+            } else {
+                alert("Incorrect Username or Password");
+            }
+        }
+    </script>
+</body>
+</html>
