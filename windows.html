@@ -15,7 +15,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: black;
+            background-color:  #151b13;
 
         }
         .login-box {
@@ -68,6 +68,27 @@
         .login-box input[type="button"]:hover {
             background: #2ecc71;
         }
+        #clock {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: rgb(200, 219, 55);
+            font-size: 24px;
+        }
+        #city {
+            position: absolute;
+            top: 40px;
+            right: 10px;
+            color: white;
+            font-size: 18px;
+        }
+        #weather {
+            position: absolute;
+            top: 70px;
+            right: 10px;
+            color: white;
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>
@@ -77,6 +98,9 @@
         <input type="password" placeholder="Password" id="password">
         <input type="button" value="Login" onclick="login()">
     </div>
+    <div id="clock"></div>
+    <div id="city">New York</div> <!-- Add your local city name here -->
+    <div id="weather"></div>
     <script>
         function login() {
             var username = document.getElementById("username").value;
@@ -88,6 +112,147 @@
                 alert("Incorrect Username or Password");
             }
         }
+
+        function updateClock() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+            var timeString = hours + ':' + minutes + ':' + seconds;
+            document.getElementById('clock').textContent = timeString;
+        }
+        setInterval(updateClock, 1000);
+        updateClock(); // initial call to display clock immediately
+
+        function updateWeather() {
+            var apiKey = 'your_api_key'; // Replace with your actual API key
+            var city = 'New York'; // Replace with the desired city
+            var url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    var temperature = data.main.temp;
+                    var weatherDescription = data.weather[0].description;
+                    var weatherString = `${city}: ${temperature}°C, ${weatherDescription}`;
+                    document.getElementById('weather').textContent = weatherString;
+                })
+                .catch(error => console.error('Error fetching weather data:', error));
+        }
+        updateWeather();
+        setInterval(updateWeather, 600000); // update weather every 10 minutes
     </script>
 </body>
 </html>
+<script>
+    function getCityName() {
+        fetch('https://ipapi.co/json/')
+            .then(response => response.json())
+            .then(data => {
+                var city = data.city;
+                document.getElementById('city').textContent = city;
+                updateWeather(city);
+            })
+            .catch(error => console.error('Error fetching city name:', error));
+    }
+
+    function updateWeather(city) {
+        var apiKey = 'your_api_key'; // Replace with your actual API key
+        var url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                var temperature = data.main.temp;
+                var weatherDescription = data.weather[0].description;
+                var weatherString = `${temperature}°C, ${weatherDescription}`;
+                document.getElementById('weather').textContent = weatherString;
+            })
+            .catch(error => console.error('Error fetching weather data:', error));
+    }
+
+    getCityName();
+    setInterval(getCityName, 600000); // update city and weather every 10 minutes
+</script>
+<div id="date"></div>
+<script>
+    function updateDate() {
+        var now = new Date();
+        var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        var dateString = now.toLocaleDateString(undefined, options);
+        document.getElementById('date').textContent = dateString;
+    }
+    updateDate();
+</script>
+<style>
+    #date {
+        position: absolute;
+        top: 100px;
+        right: 10px;
+        color: white;
+        font-size: 18px;
+    }
+    #timezone {
+        position: absolute;
+        top: 130px;
+        right: 10px;
+        color: white;
+        font-size: 18px;
+    }
+</style
+<div id="different-timezone"></div>
+<script>
+    function updateDifferentTimeZone() {
+        var now = new Date();
+        var options = { timeZone: 'Europe/London', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        var timeString = new Intl.DateTimeFormat('en-GB', options).format(now);
+        document.getElementById('different-timezone').textContent = `London Time: ${timeString}`;
+    }
+    setInterval(updateDifferentTimeZone, 1000);
+    updateDifferentTimeZone(); // initial call to display time immediately
+</script>
+<style>
+    #different-timezone {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        color: white;
+        font-size: 18px;
+    }
+</style>
+<div id="different-timezone-ny"></div>
+<div id="different-timezone-tokyo"></div>
+<script>
+    function updateDifferentTimeZones() {
+        var now = new Date();
+        
+        var optionsNY = { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        var timeStringNY = new Intl.DateTimeFormat('en-US', optionsNY).format(now);
+        document.getElementById('different-timezone-ny').textContent = `New York Time: ${timeStringNY}`;
+        
+        var optionsTokyo = { timeZone: 'Asia/Tokyo', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        var timeStringTokyo = new Intl.DateTimeFormat('en-JP', optionsTokyo).format(now);
+        document.getElementById('different-timezone-tokyo').textContent = `Tokyo Time: ${timeStringTokyo}`;
+    }
+    setInterval(updateDifferentTimeZones, 1000);
+    updateDifferentTimeZones(); // initial call to display time immediately
+</script>
+<style>
+    #different-timezone-ny {
+        position: absolute;
+        top: 40px;
+        left: 10px;
+        color: white;
+        font-size: 18px;
+    }
+    #different-timezone-tokyo {
+        position: absolute;
+        top: 70px;
+        left: 10px;
+        color: white;
+        font-size: 18px;
+        
+    }
+</style>
