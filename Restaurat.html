@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charlovee</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:darkgray;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+        nav {
+            background-color: #444;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 1em;
+            text-decoration: none;
+        }
+        .content {
+            padding: 2em;
+        }
+        .staff {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .staff-member {
+            margin: 1em;
+            text-align: center;
+        }
+        .staff-member img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+        main {
+            padding: 1em;
+        }
+        .staff-member {
+            margin: 1em;
+            text-align: center;
+        }
+        .staff-member img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+        }
+        menuItems {
+            padding: 1em;
+        }
+        .staff {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .staff-member {
+            margin: 1em;
+            text-align: center;
+        }
+        #menuItems {
+            padding: 1em;
+        }
+        .staff {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        #menuForm {
+            padding: 1em;
+        }
+        form {
+            padding: 1em;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Karibu Charlovee</h1>
+    </header>
+    <nav>
+        <style>
+            nav {
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+            }
+        </style>
+        <a href="#menu">Menu</a>
+        <a href="#order">Order Online</a>
+        <a href="#staff">Our Staff</a>
+    </nav>
+    <div class="content" id="menu">
+        <h2>Menu</h2>
+        <form id="menuForm">
+            <label for="country">Select a country:</label><br>
+            <select id="country" name="country" onchange="showMenu()">
+                <option value="">--Select a country--</option>
+                <option value="italy">Italy</option>
+                <option value="france">France</option>
+                <option value="japan">Japan</option>
+                <option value="mexico">Mexico</option>
+                <option value="india">India</option>
+                <option value="china">China</option>
+                <option value="thailand">Thailand</option>
+                <option value="spain">Spain</option>
+                <option value="greece">Greece</option>
+                <option value="brazil">Brazil</option>
+            </select>
+        </form>
+        <div id="menuItems"></div>
+        <script>
+            const menus = {
+                italy: ['Pizza', 'Pasta', 'Gelato'],
+                france: ['Croissant', 'Baguette', 'Escargot'],
+                japan: ['Sushi', 'Ramen', 'Tempura'],
+                mexico: ['Tacos', 'Burritos', 'Quesadillas'],
+                india: ['Curry', 'Naan', 'Biryani'],
+                china: ['Dumplings', 'Peking Duck', 'Sweet and Sour Pork'],
+                thailand: ['Pad Thai', 'Green Curry', 'Tom Yum Soup'],
+                spain: ['Paella', 'Tapas', 'Churros'],
+                greece: ['Moussaka', 'Souvlaki', 'Tzatziki'],
+                brazil: ['Feijoada', 'Churrasco', 'Brigadeiro']
+            };
+
+            function showMenu() {
+                const country = document.getElementById('country').value;
+                const menuItemsDiv = document.getElementById('menuItems');
+                menuItemsDiv.innerHTML = '';
+
+                if (country && menus[country]) {
+                    menus[country].forEach(item => {
+                        const checkbox = document.createElement('input');
+                        checkbox.type = 'checkbox';
+                        checkbox.id = item;
+                        checkbox.name = 'menuItems';
+                        checkbox.value = item;
+
+                        const label = document.createElement('label');
+                        label.htmlFor = item;
+                        label.appendChild(document.createTextNode(item));
+
+                        menuItemsDiv.appendChild(checkbox);
+                        menuItemsDiv.appendChild(label);
+                        menuItemsDiv.appendChild(document.createElement('br'));
+                    });
+                }
+            }
+        </script>
+    </div>
+    <div class="content" id="order">
+        <h2>Order Online</h2>
+        <form id="orderForm"></form>
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br>
+            <h3>Your Order</h3>
+            <div id="selectedItems"></div>
+            <input type="submit" value="Submit Order">
+        </form>
+
+        <script>
+            document.getElementById('menuForm').addEventListener('change', updateOrderSummary);
+
+            function updateOrderSummary() {
+                const selectedItemsDiv = document.getElementById('selectedItems');
+                selectedItemsDiv.innerHTML = '';
+                
+                const checkboxes = document.querySelectorAll('#menuItems input[type="checkbox"]:checked');
+                checkboxes.forEach(checkbox => {
+                    const item = document.createElement('p');
+                    item.textContent = checkbox.value;
+                    selectedItemsDiv.appendChild(item);
+                });
+            }
+        </script>
+    </div>
+    <div class="content" id="staff">
+        <h2>Our Staff</h2>
+        <div class="staff">
+            <div class="staff-member">
+                <img src="staff1.jpg" alt="Staff Member 1">
+                <h3>John Doe</h3>
+                <p>Email: john@example.com</p>
+            </div>
+            <div class="staff-member">
+                <img src="staff2.jpg" alt="Staff Member 2">
+                <h3>Jane Smith</h3>
+                <p>Email: jane@example.com</p>
+            </div>
+            <div class="staff-member">
+                <img src="staff2.jpg" alt="Staff Member 2">
+                <h3>Jane Smith</h3>
+                <p>Email: jane@example.com</p>
+            </div>
+            <div class="staff-member">
+                <img src="staff2.jpg" alt="Staff Member 2">
+                <h3>Jane Smith</h3>
+                <p>Email: jane@example.com</p>
+            </div>
+            <div class="staff-member">
+                <img src="staff2.jpg" alt="Staff Member 2">
+                <h3>Jane Smith</h3>
+                <p>Email: jane@example.com</p>
+            </div>
+            <div class="staff-member">
+                <img src="staff2.jpg" alt="Staff Member 2">
+                <h3>Jane Smith</h3>
+                <p>Email: jane@example.com</p>
+            </div>
+            <div class="staff-member">
+                <img src="staff2.jpg" alt="Staff Member 2">
+                <h3>Jane Smith</h3>
+                <p>Email: jane@example.com</p>
+            </div>
+            <div class="staff-member">
+                <img src="staff2.jpg" alt="Staff Member 2">
+                <h3>Jane Smith</h3>
+                <p>Email: jane@example.com</p>
+            </div>
+            <!-- Add more staff members as needed -->
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2023 Our Restaurant</p>
+    </footer>
+</body>
+</html></div>
