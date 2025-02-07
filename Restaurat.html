@@ -30,6 +30,8 @@
         }
         .content {
             padding: 2em;
+            margin: 1em;
+            background-color: white;
         }
         .staff {
             display: flex;
@@ -62,9 +64,7 @@
             width: 150px;
             height: 150px;
         }
-        menuItems {
-            padding: 1em;
-        }
+ 
         .staff {
             display: flex;
             flex-wrap: wrap;
@@ -75,6 +75,7 @@
         }
         #menuItems {
             padding: 1em;
+            color: yellow;
         }
         .staff {
             display: flex;
@@ -82,11 +83,86 @@
         }
         #menuForm {
             padding: 1em;
+
         }
         form {
             padding: 1em;
         }
+        input[type="text"], input[type="email"] {
+            border: none;
+            background: none;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            border: 2px solid #3498db;
+            padding: 14px 10px;
+            width: 200px;
+            outline: none;
+            color: burlywood;
+            border-radius: 24px;
+            transition: 0.25s;
+        }
+        input[type="text"]:focus, input[type="email"]:focus {
+            width: 280px;
+            border-color: #2ecc71;
+        }
+        input[type="submit"] {
+            border: none;
+            background: none;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            border: 2px solid #2ecc71;
+            padding: 14px 40px;
+            outline: none;
+            color: white;
+            border-radius: 24px;
+            transition: 0.25s;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background: #2ecc71;
+        }
+        label {
+            color: white;
 
+        }
+        select {
+            border: none;
+            background: none;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            border: 2px solid #3498db;
+            padding: 14px 10px;
+            width: 200px;
+            outline: none;
+            color: burlywood;
+            border-radius: 24px;
+            transition: 0.25s;
+        }
+        select:focus {
+            width: 280px;
+            border-color: #2ecc71;
+        }
+        #menuItems {
+            padding: 1em;
+        }
+        .staff {
+            display: flex;
+            flex-wrap: wrap;
+        }
+      
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+        option {
+            color: black;
+        }
+        
     </style>
 </head>
 <body>
@@ -121,21 +197,23 @@
                 <option value="spain">Spain</option>
                 <option value="greece">Greece</option>
                 <option value="brazil">Brazil</option>
+                <option value="Tanzania">Tanzania</option>
             </select>
         </form>
         <div id="menuItems"></div>
         <script>
             const menus = {
-                italy: ['Pizza', 'Pasta', 'Gelato'],
-                france: ['Croissant', 'Baguette', 'Escargot'],
-                japan: ['Sushi', 'Ramen', 'Tempura'],
-                mexico: ['Tacos', 'Burritos', 'Quesadillas'],
-                india: ['Curry', 'Naan', 'Biryani'],
-                china: ['Dumplings', 'Peking Duck', 'Sweet and Sour Pork'],
-                thailand: ['Pad Thai', 'Green Curry', 'Tom Yum Soup'],
-                spain: ['Paella', 'Tapas', 'Churros'],
-                greece: ['Moussaka', 'Souvlaki', 'Tzatziki'],
-                brazil: ['Feijoada', 'Churrasco', 'Brigadeiro']
+                italy: ['Pizza', 'Pasta', 'Gelato', 'Gnocchi', 'Risotto', 'Tiramisu', 'Lasagna', 'Ossobuco', 'Cannoli', 'Prosciutto', 'Minestrone', 'Bruschetta'],
+                france: ['Croissant', 'Baguette', 'Escargot', 'Ratatouille', 'Quiche', 'Crepes', 'Foie Gras', 'Coq au Vin', 'Bouillabaisse', 'Cassoulet', 'Duck a l\'Orange', 'Tarte Tatin'],
+                japan: ['Sushi', 'Ramen', 'Tempura', 'Sashimi', 'Udon', 'Yakitori', 'Miso Soup', 'Tonkatsu', 'Okonomiyaki', 'Kaiseki', 'Natto', 'Yakitori'],
+                mexico: ['Tacos', 'Burritos', 'Quesadillas', 'Enchiladas', 'Chiles Rellenos', 'Guacamole', 'Tamales', 'Pozole', 'Churros', 'Flan', 'Mole', 'Sopes'],
+                india: ['Curry', 'Naan', 'Biryani', 'Samosa', 'Tandoori', 'Chaat', 'Dosa', 'Lassi', 'Vindaloo', 'Korma', 'Raita', 'Pakora'],
+                china: ['Dumplings', 'Peking Duck', 'Sweet and Sour Pork', 'Kung Pao Chicken', 'Spring Rolls', 'Chow Mein'],
+                thailand: ['Pad Thai', 'Green Curry', 'Tom Yum Soup', 'Som Tum', 'Massaman Curry', 'Khao Pad', 'Pad Krapow', 'Tom Kha Gai', 'Pad See Ew'],
+                spain: ['Paella', 'Tapas', 'Churros', 'Gazpacho', 'Tortilla Espanola', 'Pulpo a la Gallega', 'Jamon Iberico', 'Crema Catalana', 'Patatas Bravas'],
+                greece: ['Moussaka', 'Souvlaki', 'Tzatziki', 'Dolmades', 'Spanakopita', 'Baklava', 'Fasolada', 'Galaktoboureko', 'Loukoumades'],
+                brazil: ['Feijoada', 'Churrasco', 'Brigadeiro', 'Pao de Queijo', 'Coxinha', 'Moqueca', 'Acaraje', 'Caipirinha', 'Vatapa', 'Farofa', 'Picanha'],
+                Tanzania: ['Ugali', 'Nyama Choma', 'Mishkaki', 'Pilau', 'Mchuzi wa Samaki', 'Mchuzi wa Kuku', 'Mchuzi wa Nyama', 'Mchuzi wa Maharage', 'Mchuzi wa Kunde', 'Mchuzi wa Mchicha', 'Mchuzi wa Ndizi', 'Mchuzi wa Bamia', 'Chipsi Mayai'],
             };
 
             function showMenu() {
@@ -164,12 +242,12 @@
         </script>
     </div>
     <div class="content" id="order">
-        <h2>Order Online</h2>
+        <h2>Agiza Mtandaoni</h2>
         <form id="orderForm"></form>
-            <label for="name">Name:</label><br>
-            <input type="text" id="name" name="name" required><br>
+            <label for="name">Jina:</label><br>
+            <input type="text" id="name" name="name"  required placeholder="Jina moja Tu"><br>
             <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" required><br>
+            <input type="email" id="email" name="email" placeholder="abcdefg@gfd.com" required><br>
             <h3>Your Order</h3>
             <div id="selectedItems"></div>
             <input type="submit" value="Submit Order">
