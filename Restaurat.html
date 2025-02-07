@@ -6,10 +6,12 @@
     <title>Charlovee</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family:Georgia, 'Times New Roman', Times, serif;
             margin: 0;
             padding: 0;
             background-color:darkgray;
+        
+
         }
         header {
             background-color: #333;
@@ -32,6 +34,8 @@
             padding: 2em;
             margin: 1em;
             background-color: white;
+            border-radius: 10px;
+            
         }
         .staff {
             display: flex;
@@ -73,17 +77,9 @@
             margin: 1em;
             text-align: center;
         }
-        #menuItems {
-            padding: 1em;
-            color: yellow;
-        }
         .staff {
             display: flex;
             flex-wrap: wrap;
-        }
-        #menuForm {
-            padding: 1em;
-
         }
         form {
             padding: 1em;
@@ -98,7 +94,7 @@
             padding: 14px 10px;
             width: 200px;
             outline: none;
-            color: burlywood;
+            color:#444;
             border-radius: 24px;
             transition: 0.25s;
         }
@@ -115,23 +111,24 @@
             border: 2px solid #2ecc71;
             padding: 14px 40px;
             outline: none;
-            color: white;
+            color: black;
             border-radius: 24px;
             transition: 0.25s;
             cursor: pointer;
+            font-size:
         }
         input[type="submit"]:hover {
             background: #2ecc71;
         }
         label {
-            color: white;
+            color:cadetblues
 
         }
         select {
             border: none;
             background: none;
             display: block;
-            margin: 20px auto;
+            margin: 14px auto;
             text-align: center;
             border: 2px solid #3498db;
             padding: 14px 10px;
@@ -147,6 +144,17 @@
         }
         #menuItems {
             padding: 1em;
+            color: black;
+            display: block;
+            margin: 14px auto;
+            text-align: center;
+            padding: 14px 10px;
+            width: 200px;
+            outline: none;
+            text-transform: initial;
+            text-wrap: initial;
+            word-wrap: break-word;
+            
         }
         .staff {
             display: flex;
@@ -162,7 +170,17 @@
         option {
             color: black;
         }
-        
+        h2 {
+            margin: 14px auto;
+            text-align: center;
+            color: black;
+            display: block;
+        }
+        ::placeholder {
+            color: black;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 1em;
+        }
     </style>
 </head>
 <body>
@@ -178,13 +196,13 @@
             }
         </style>
         <a href="#menu">Menu</a>
-        <a href="#order">Order Online</a>
-        <a href="#staff">Our Staff</a>
+        <a href="#order">Mtandaoni</a>
+        <a href="#staff">Wafanyakazi </a>
     </nav>
     <div class="content" id="menu">
         <h2>Menu</h2>
         <form id="menuForm">
-            <label for="country">Select a country:</label><br>
+            <label for="country"></label><br>
             <select id="country" name="country" onchange="showMenu()">
                 <option value="">--Select a country--</option>
                 <option value="italy">Italy</option>
@@ -198,6 +216,7 @@
                 <option value="greece">Greece</option>
                 <option value="brazil">Brazil</option>
                 <option value="Tanzania">Tanzania</option>
+                <option value="Uganda">Uganda</option>
             </select>
         </form>
         <div id="menuItems"></div>
@@ -214,6 +233,7 @@
                 greece: ['Moussaka', 'Souvlaki', 'Tzatziki', 'Dolmades', 'Spanakopita', 'Baklava', 'Fasolada', 'Galaktoboureko', 'Loukoumades'],
                 brazil: ['Feijoada', 'Churrasco', 'Brigadeiro', 'Pao de Queijo', 'Coxinha', 'Moqueca', 'Acaraje', 'Caipirinha', 'Vatapa', 'Farofa', 'Picanha'],
                 Tanzania: ['Ugali', 'Nyama Choma', 'Mishkaki', 'Pilau', 'Mchuzi wa Samaki', 'Mchuzi wa Kuku', 'Mchuzi wa Nyama', 'Mchuzi wa Maharage', 'Mchuzi wa Kunde', 'Mchuzi wa Mchicha', 'Mchuzi wa Ndizi', 'Mchuzi wa Bamia', 'Chipsi Mayai'],
+                Uganda: ['Matoke', 'Luwombo', 'Katogo', 'Rolex', 'Kikomando', 'Kabalagala',],
             };
 
             function showMenu() {
@@ -244,11 +264,11 @@
     <div class="content" id="order">
         <h2>Agiza Mtandaoni</h2>
         <form id="orderForm"></form>
-            <label for="name">Jina:</label><br>
+            <label for="name"></label><br>
             <input type="text" id="name" name="name"  required placeholder="Jina moja Tu"><br>
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" placeholder="abcdefg@gfd.com" required><br>
-            <h3>Your Order</h3>
+            <label for="email"></label><br>
+            <input type="email" id="email" name="email" placeholder="Email" required><br>
+            <h3></h3>
             <div id="selectedItems"></div>
             <input type="submit" value="Submit Order">
         </form>
