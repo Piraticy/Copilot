@@ -24,6 +24,9 @@
             color: white;
             padding: 1em;
             text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
         nav a {
             color: white;
@@ -90,7 +93,7 @@
             display: block;
             margin: 20px auto;
             text-align: center;
-            border: 2px solid #3498db;
+            border: 2px solid #333;
             padding: 13px 10px;
             width: 200px;
             outline: none;
@@ -100,7 +103,7 @@
         }
         input[type="text"]:focus, input[type="email"]:focus {
             width: 280px;
-            border-color: #2ecc71;
+            border-color: #333;
         }
         input[type="submit"] {
             border: none;
@@ -108,7 +111,7 @@
             display: block;
             margin: 20px auto;
             text-align: center;
-            border: 2px solid #2ecc71;
+            border: 2px solid #333;
             padding: 14px 40px;
             outline: none;
             color: black;
@@ -118,7 +121,7 @@
             font-size: 16px;
         }
         input[type="submit"]:hover {
-            background: #2ecc71;
+            background: #444;
             color: white;
             text-transform: uppercase;
         }
@@ -132,7 +135,7 @@
             display: block;
             margin: 14px auto;
             text-align: center;
-            border: 2px solid #3498db;
+            border: 2px solid #333 ;
             padding: 14px 10px;
             width: 200px;
             outline: none;
@@ -142,7 +145,7 @@
         }
         select:focus {
             width: 280px;
-            border-color: #2ecc71;
+            border-color: #444;
         }
         #menuItems {
             padding: 1em;
@@ -190,13 +193,6 @@
         <h1>Karibu Charlovee</h1>
     </header>
     <nav>
-        <style>
-            nav {
-                position: sticky;
-                top: 0;
-                z-index: 1000;
-            }
-        </style>
         <a href="#menu">Menu</a>
         <a href="#order">Mtandaoni</a>
         <a href="#staff">Wafanyakazi </a>
